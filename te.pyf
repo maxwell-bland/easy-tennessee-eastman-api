@@ -1,0 +1,392 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module tepy ! in 
+    interface  ! in :tepy
+        subroutine tefunc(nn,time,yy,yp) ! in :tepy:teprob.f
+            integer, optional,check(len(yy)>=nn),depend(yy) :: nn=len(yy)
+            double precision :: time
+            double precision dimension(nn) :: yy
+            double precision intent(out),dimension(nn),depend(nn) :: yp
+            double precision dimension(41) :: xmeas
+            double precision dimension(12) :: xmv
+            integer :: isd
+            integer dimension(20) :: idv
+            real dimension(8) :: uclr
+            real dimension(8) :: ucvr
+            real :: utlr
+            real :: utvr
+            real dimension(8) :: xlr
+            real dimension(8) :: xvr
+            real :: etr
+            real :: esr
+            real :: tcr
+            real :: tkr
+            real :: dlr
+            real :: vlr
+            real :: vvr
+            real :: vtr
+            real :: ptr
+            real dimension(8) :: ppr
+            real dimension(8) :: crxr
+            real dimension(4) :: rr
+            real :: rh
+            real :: fwr
+            real :: twr
+            real :: qur
+            real :: hwr
+            real :: uar
+            real dimension(8) :: ucls
+            real dimension(8) :: ucvs
+            real :: utls
+            real :: utvs
+            real dimension(8) :: xls
+            real dimension(8) :: xvs
+            real :: ets
+            real :: ess
+            real :: tcs
+            real :: tks
+            real :: dls
+            real :: vls
+            real :: vvs
+            real :: vts
+            real :: pts
+            real dimension(8) :: pps
+            real :: fws
+            real :: tws
+            real :: qus
+            real :: hws
+            real dimension(8) :: uclc
+            real :: utlc
+            real dimension(8) :: xlc
+            real :: etc
+            real :: esc
+            real :: tcc
+            real :: dlc
+            real :: vlc
+            real :: vtc
+            real :: quc
+            real dimension(8) :: ucvv
+            real :: utvv
+            real dimension(8) :: xvv
+            real :: etv
+            real :: esv
+            real :: tcv
+            real :: tkv
+            real :: vtv
+            real :: ptv
+            real dimension(12) :: vcv
+            real dimension(12) :: vrng
+            real dimension(12) :: vtau
+            real dimension(13) :: ftm
+            real dimension(8,13) :: fcm
+            real dimension(8,13) :: xst
+            real dimension(13) :: xmws
+            real dimension(13) :: hst
+            real dimension(13) :: tst
+            real dimension(8) :: sfr
+            real :: cpflmx
+            real :: cpprmx
+            real :: cpdh
+            real :: tcwr
+            real :: tcws
+            real dimension(3) :: htr
+            real :: agsp
+            real dimension(41) :: xdel
+            real dimension(41) :: xns
+            real :: tgas
+            real :: tprod
+            real dimension(12) :: vst
+            integer dimension(12) :: ivst
+            real dimension(12) :: adist
+            real dimension(12) :: bdist
+            real dimension(12) :: cdist
+            real dimension(12) :: ddist
+            real dimension(12) :: tlast
+            real dimension(12) :: tnext
+            real dimension(12) :: hspan
+            real dimension(12) :: hzero
+            real dimension(12) :: sspan
+            real dimension(12) :: szero
+            real dimension(12) :: spspan
+            integer dimension(12) :: idvwlk
+            real dimension(8) :: avp
+            real dimension(8) :: bvp
+            real dimension(8) :: cvp
+            real dimension(8) :: ah
+            real dimension(8) :: bh
+            real dimension(8) :: ch
+            real dimension(8) :: ag
+            real dimension(8) :: bg
+            real dimension(8) :: cg
+            real dimension(8) :: av
+            real dimension(8) :: ad
+            real dimension(8) :: bd
+            real dimension(8) :: cd
+            real dimension(8) :: xmw
+            common /pv/ xmeas,xmv,isd
+            common /dvec/ idv
+            common /teproc/ uclr,ucvr,utlr,utvr,xlr,xvr,etr,esr,tcr,tkr,dlr,vlr,vvr,vtr,ptr,ppr,crxr,rr,rh,fwr,twr,qur,hwr,uar,ucls,ucvs,utls,utvs,xls,xvs,ets,ess,tcs,tks,dls,vls,vvs,vts,pts,pps,fws,tws,qus,hws,uclc,utlc,xlc,etc,esc,tcc,dlc,vlc,vtc,quc,ucvv,utvv,xvv,etv,esv,tcv,tkv,vtv,ptv,vcv,vrng,vtau,ftm,fcm,xst,xmws,hst,tst,sfr,cpflmx,cpprmx,cpdh,tcwr,tcws,htr,agsp,xdel,xns,tgas,tprod,vst,ivst
+            common /wlk/ adist,bdist,cdist,ddist,tlast,tnext,hspan,hzero,sspan,szero,spspan,idvwlk
+            common /const/ avp,bvp,cvp,ah,bh,ch,ag,bg,cg,av,ad,bd,cd,xmw
+        end subroutine tefunc
+        subroutine teinit(nn,time,yy,yp) ! in :tepy:teprob.f
+            integer, optional,check(len(yy)>=nn),depend(yy) :: nn=len(yy)
+            double precision intent(out) :: time
+            double precision intent(out),dimension(50) :: yy
+            double precision intent(out),dimension(50),depend(nn) :: yp
+            double precision dimension(41) :: xmeas
+            double precision dimension(12) :: xmv
+            integer dimension(20) :: idv
+            double precision :: g
+            real dimension(8) :: uclr
+            real dimension(8) :: ucvr
+            real :: utlr
+            real :: utvr
+            real dimension(8) :: xlr
+            real dimension(8) :: xvr
+            real :: etr
+            real :: esr
+            real :: tcr
+            real :: tkr
+            real :: dlr
+            real :: vlr
+            real :: vvr
+            real :: vtr
+            real :: ptr
+            real dimension(8) :: ppr
+            real dimension(8) :: crxr
+            real dimension(4) :: rr
+            real :: rh
+            real :: fwr
+            real :: twr
+            real :: qur
+            real :: hwr
+            real :: uar
+            real dimension(8) :: ucls
+            real dimension(8) :: ucvs
+            real :: utls
+            real :: utvs
+            real dimension(8) :: xls
+            real dimension(8) :: xvs
+            real :: ets
+            real :: ess
+            real :: tcs
+            real :: tks
+            real :: dls
+            real :: vls
+            real :: vvs
+            real :: vts
+            real :: pts
+            real dimension(8) :: pps
+            real :: fws
+            real :: tws
+            real :: qus
+            real :: hws
+            real dimension(8) :: uclc
+            real :: utlc
+            real dimension(8) :: xlc
+            real :: etc
+            real :: esc
+            real :: tcc
+            real :: dlc
+            real :: vlc
+            real :: vtc
+            real :: quc
+            real dimension(8) :: ucvv
+            real :: utvv
+            real dimension(8) :: xvv
+            real :: etv
+            real :: esv
+            real :: tcv
+            real :: tkv
+            real :: vtv
+            real :: ptv
+            real dimension(12) :: vcv
+            real dimension(12) :: vrng
+            real dimension(12) :: vtau
+            real dimension(13) :: ftm
+            real dimension(8,13) :: fcm
+            real dimension(8,13) :: xst
+            real dimension(13) :: xmws
+            real dimension(13) :: hst
+            real dimension(13) :: tst
+            real dimension(8) :: sfr
+            real :: cpflmx
+            real :: cpprmx
+            real :: cpdh
+            real :: tcwr
+            real :: tcws
+            real dimension(3) :: htr
+            real :: agsp
+            real dimension(41) :: xdel
+            real dimension(41) :: xns
+            real :: tgas
+            real :: tprod
+            real dimension(12) :: vst
+            integer dimension(12) :: ivst
+            real dimension(12) :: adist
+            real dimension(12) :: bdist
+            real dimension(12) :: cdist
+            real dimension(12) :: ddist
+            real dimension(12) :: tlast
+            real dimension(12) :: tnext
+            real dimension(12) :: hspan
+            real dimension(12) :: hzero
+            real dimension(12) :: sspan
+            real dimension(12) :: szero
+            real dimension(12) :: spspan
+            integer dimension(12) :: idvwlk
+            real dimension(8) :: avp
+            real dimension(8) :: bvp
+            real dimension(8) :: cvp
+            real dimension(8) :: ah
+            real dimension(8) :: bh
+            real dimension(8) :: ch
+            real dimension(8) :: ag
+            real dimension(8) :: bg
+            real dimension(8) :: cg
+            real dimension(8) :: av
+            real dimension(8) :: ad
+            real dimension(8) :: bd
+            real dimension(8) :: cd
+            real dimension(8) :: xmw
+            common /pv/ xmeas,xmv
+            common /dvec/ idv
+            common /randsd/ g
+            common /teproc/ uclr,ucvr,utlr,utvr,xlr,xvr,etr,esr,tcr,tkr,dlr,vlr,vvr,vtr,ptr,ppr,crxr,rr,rh,fwr,twr,qur,hwr,uar,ucls,ucvs,utls,utvs,xls,xvs,ets,ess,tcs,tks,dls,vls,vvs,vts,pts,pps,fws,tws,qus,hws,uclc,utlc,xlc,etc,esc,tcc,dlc,vlc,vtc,quc,ucvv,utvv,xvv,etv,esv,tcv,tkv,vtv,ptv,vcv,vrng,vtau,ftm,fcm,xst,xmws,hst,tst,sfr,cpflmx,cpprmx,cpdh,tcwr,tcws,htr,agsp,xdel,xns,tgas,tprod,vst,ivst
+            common /wlk/ adist,bdist,cdist,ddist,tlast,tnext,hspan,hzero,sspan,szero,spspan,idvwlk
+            common /const/ avp,bvp,cvp,ah,bh,ch,ag,bg,cg,av,ad,bd,cd,xmw
+        end subroutine teinit
+        subroutine tesub1(z,t,h,ity) ! in :tepy:teprob.f
+            double precision dimension(8) :: z
+            double precision :: t
+            double precision :: h
+            integer :: ity
+            real dimension(8) :: avp
+            real dimension(8) :: bvp
+            real dimension(8) :: cvp
+            real dimension(8) :: ah
+            real dimension(8) :: bh
+            real dimension(8) :: ch
+            real dimension(8) :: ag
+            real dimension(8) :: bg
+            real dimension(8) :: cg
+            real dimension(8) :: av
+            real dimension(8) :: ad
+            real dimension(8) :: bd
+            real dimension(8) :: cd
+            real dimension(8) :: xmw
+            common /const/ avp,bvp,cvp,ah,bh,ch,ag,bg,cg,av,ad,bd,cd,xmw
+        end subroutine tesub1
+        subroutine tesub2(z,t,h,ity) ! in :tepy:teprob.f
+            double precision dimension(8) :: z
+            double precision :: t
+            double precision :: h
+            integer :: ity
+            real dimension(8) :: avp
+            real dimension(8) :: bvp
+            real dimension(8) :: cvp
+            real dimension(8) :: ah
+            real dimension(8) :: bh
+            real dimension(8) :: ch
+            real dimension(8) :: ag
+            real dimension(8) :: bg
+            real dimension(8) :: cg
+            real dimension(8) :: av
+            real dimension(8) :: ad
+            real dimension(8) :: bd
+            real dimension(8) :: cd
+            real dimension(8) :: xmw
+            common /const/ avp,bvp,cvp,ah,bh,ch,ag,bg,cg,av,ad,bd,cd,xmw
+        end subroutine tesub2
+        subroutine tesub3(z,t,dh,ity) ! in :tepy:teprob.f
+            double precision dimension(8) :: z
+            double precision :: t
+            double precision :: dh
+            integer :: ity
+            real dimension(8) :: avp
+            real dimension(8) :: bvp
+            real dimension(8) :: cvp
+            real dimension(8) :: ah
+            real dimension(8) :: bh
+            real dimension(8) :: ch
+            real dimension(8) :: ag
+            real dimension(8) :: bg
+            real dimension(8) :: cg
+            real dimension(8) :: av
+            real dimension(8) :: ad
+            real dimension(8) :: bd
+            real dimension(8) :: cd
+            real dimension(8) :: xmw
+            common /const/ avp,bvp,cvp,ah,bh,ch,ag,bg,cg,av,ad,bd,cd,xmw
+        end subroutine tesub3
+        subroutine tesub4(x,t,r) ! in :tepy:teprob.f
+            double precision dimension(8) :: x
+            double precision :: t
+            double precision :: r
+            real dimension(8) :: avp
+            real dimension(8) :: bvp
+            real dimension(8) :: cvp
+            real dimension(8) :: ah
+            real dimension(8) :: bh
+            real dimension(8) :: ch
+            real dimension(8) :: ag
+            real dimension(8) :: bg
+            real dimension(8) :: cg
+            real dimension(8) :: av
+            real dimension(8) :: ad
+            real dimension(8) :: bd
+            real dimension(8) :: cd
+            real dimension(8) :: xmw
+            common /const/ avp,bvp,cvp,ah,bh,ch,ag,bg,cg,av,ad,bd,cd,xmw
+        end subroutine tesub4
+        subroutine tesub5(s,sp,adist,bdist,cdist,ddist,tlast,tnext,hspan,hzero,sspan,szero,spspan,idvflag) ! in :tepy:teprob.f
+            real :: s
+            real :: sp
+            real :: adist
+            real :: bdist
+            real :: cdist
+            real :: ddist
+            real :: tlast
+            real :: tnext
+            real :: hspan
+            real :: hzero
+            real :: sspan
+            real :: szero
+            real :: spspan
+            integer :: idvflag
+        end subroutine tesub5
+        subroutine tesub6(std,x) ! in :tepy:teprob.f
+            double precision :: std
+            double precision :: x
+        end subroutine tesub6
+        function tesub7(i) ! in :tepy:teprob.f
+            integer :: i
+            double precision :: g
+            double precision :: tesub7
+            common /randsd/ g
+        end function tesub7
+        function tesub8(i,t) ! in :tepy:teprob.f
+            integer :: i
+            double precision :: t
+            real dimension(12) :: adist
+            real dimension(12) :: bdist
+            real dimension(12) :: cdist
+            real dimension(12) :: ddist
+            real dimension(12) :: tlast
+            real dimension(12) :: tnext
+            real dimension(12) :: hspan
+            real dimension(12) :: hzero
+            real dimension(12) :: sspan
+            real dimension(12) :: szero
+            real dimension(12) :: spspan
+            integer dimension(12) :: idvwlk
+            double precision :: tesub8
+            common /wlk/ adist,bdist,cdist,ddist,tlast,tnext,hspan,hzero,sspan,szero,spspan,idvwlk
+        end function tesub8
+    end interface 
+end python module tepy
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
